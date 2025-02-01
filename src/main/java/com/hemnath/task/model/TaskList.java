@@ -14,7 +14,7 @@ public class TaskList {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id",updatable = false,nullable = false)
-    private UUID id;
+    private UUID taskListId;
 
     @Column(name = "title",nullable = false)
     private String title;
@@ -36,8 +36,8 @@ public class TaskList {
     public TaskList() {
     }
 
-    public TaskList(UUID id, String title, String description, List<Task> tasks, LocalDateTime created, LocalDateTime updated) {
-        this.id = id;
+    public TaskList(UUID taskListId, String title, String description, List<Task> tasks, LocalDateTime created, LocalDateTime updated) {
+        this.taskListId = taskListId;
         this.title = title;
         this.description = description;
         this.tasks = tasks;
@@ -46,11 +46,11 @@ public class TaskList {
     }
 
     public UUID getId() {
-        return id;
+        return taskListId;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.taskListId = id;
     }
 
     public String getTitle() {
@@ -97,18 +97,18 @@ public class TaskList {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TaskList taskList = (TaskList) o;
-        return Objects.equals(id, taskList.id) && Objects.equals(title, taskList.title) && Objects.equals(description, taskList.description) && Objects.equals(tasks, taskList.tasks) && Objects.equals(created, taskList.created) && Objects.equals(updated, taskList.updated);
+        return Objects.equals(taskListId, taskList.taskListId) && Objects.equals(title, taskList.title) && Objects.equals(description, taskList.description) && Objects.equals(tasks, taskList.tasks) && Objects.equals(created, taskList.created) && Objects.equals(updated, taskList.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, tasks, created, updated);
+        return Objects.hash(taskListId, title, description, tasks, created, updated);
     }
 
     @Override
     public String toString() {
         return "TaskList{" +
-                "id=" + id +
+                "taskListId=" + taskListId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", tasks=" + tasks +
